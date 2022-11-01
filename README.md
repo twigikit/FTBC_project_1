@@ -1,5 +1,4 @@
 # FTBC_project_1
-# FTBC_project_1
 
 ### Project Proposal
 We have tried to look at where there is any changes in the spending patterns in Australian Household expenditure, where people spend money, were they any changes in the spending pattern during covid pandemic and whether there was any relation of speding with umployement rate and savings ratio. 
