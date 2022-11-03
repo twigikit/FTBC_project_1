@@ -11,14 +11,22 @@ This study seeks to uncover the Australian Household consumption and expenditure
 
 We also explore if there is any possbile Covid pandemic stimulated changes in consumption pattern. Care should be taken when interpreting the time series analysis results. 
 
+## Potential Target Audience
+
+TBC
+
+
 
 ## Data Used
 The following data has been used in the study:
 * Australian household final consumption and expenditure quarterly seasonally adjusted chain volume measures published by the Australian Bureau of Statistics (ABS)
 * Australia monthly seaosonally adjusted unemployment rate published by the ABS
 * Australia quarterly seasonally adjusted household saving ratio published by the ABS
-* Australia Stock Market Index data collected using the Yahoo Finance API.
+* Australian Stock Market Index data collected using the Yahoo Finance API.
 
+Chain volume measure is chosen as it measures consumption volumes by removing the part inflated by price increases. This metric also referred as constant price estimates. It provides better indication of movement in expenditure.
+
+Seasonally adjusted data are used to better reflect the true patterns in the underlying consumption 
 
 ### Data Cleaning and Exploration
 * Economic related data were sourced from ABS, mainly using panda's read_csv method for consistency. Open API yFinance, which extracted ASX data from Yahoo Finance. Date column is set as index for further concatenation and comparison.
@@ -35,69 +43,55 @@ The following data has been used in the study:
 
 * We then converted the annualised averaged into percentage of spending among all the category by combining the transform method and anonymous function (i.e. "transform(lambda x: round(100 * x / df_mean.sum(axis = 1),2))", the converted result was visualised in pie chart used methods of ".subplots".
 
-
 ### Key observations and findings
 #### Where do Australian spend their money?
 
 <img src="./Diagram/spending_by_cat.jpg" width = "500"> <br>
-In 2022, the top 5 category that Australians spend on are: <br>
+In 2022, the top 3 category that Australians spend on are: <br>
 * Rent
 * Recreation
 * Food
-* Insurance
-* Health
 
 #### How has the consumption pattern changed over time?
 ![](./Diagram/spendingtrend.jpg)
 
-* We observe year on year increase in household consumption and expenditure from 2012 - 2018.
-* The increase in household spending seem to be plateauing between 2018 and 2019.
-* As the Covid pandemic hits (late Q1 2020), we observe a significant drop in the household expenditure. This is likely driven by the mandatory lockdown and travel restrictions imposed across all states. 
-* As we emerge out from pandemic, we see a steep increase in household spending.
-
+We observe year on year increase in household consumption and expenditure from 2012 - 2018. The increase in household spending seem to be plateauing between 2018 and 2019. As the Covid pandemic hits (late Q1 2020), we observe a significant drop in the household expenditure. This is likely driven by the mandatory lockdown and travel restrictions imposed across all states. As we emerge from pandemic, we see a steep increase in household spending.
 
 The following barplot shows the ten year trend for each spending category.
 ![](./Diagram/barplot_with_popup.jpg)
 
-
-#### Relationship between unemployment and household consumption
+#### Relationship between unemployment and household consumption pattern
 <img src="./Diagram/unemploy_corr.jpg" width="400">
 
-**Hypothesis:** As unemployment increases, spending on discretionary items are expected to decrease; spending on necessacity are likely to remain unchanged.
+**Hypothesis:** As unemployment increases, the expected spending pattern are:
+* spending on discretionary items are likely to decrease and
+* spending on necessities are likely to remain unchanged.
 
-**Conclusion:** The calculated correlation coefficients between unemployment and spending in each category largely agree with the hypothesis. We observed that spending on tobacco and alcohol tend to increase when unemployment increase. 
+**Results:** The calculated correlation coefficients between unemployment and spending pattern in each category largely agree with the hypothesis. We observed that spending on tobacco and alcohol tend to increase when unemployment increase. 
 
-#### Relationship between household saving and household consumption
+#### Relationship between household saving and household consumption pattern
 <img src="./Diagram/saving_corr.jpg" width="400">
 
-**Hypothesis:** As unemployment increases, spending on discretionary items are expected to decrease; spending on necessacity are likely to remain unchanged.
+**Hypothesis:** Increase in saving means less spending in absolute dollar terms. The expected spending patterns are:
+* spending on discretionary items are likely to decrease and 
+* spending on necessities remains largely unchanged.
 
-**Conclusion:** The calculated correlation coefficients between unemployment and spending in each category largely agree with the hypothesis. We observed that spending on tobacco and alcohol tend to increase when unemployment increase. 
+**Results:** The calculated correlation coefficients between household saving and spending pattern in each category largely agree with the hypothesis. However, an unexpected observation is that there is a positive correlation between saving and spending on alcohol. 
 
-4. Saving is positively correlated with alcohol spending (0.766694) and negatively correlated with operation_vehicle (0.873177, recreation 0.791215, hotel 0.799859. 
-
-
-#### Relationship between ASX 200 and household consumption
+#### Relationship between ASX 200 and household consumption pattern
 <img src="./Diagram/ASX_corr.jpg" width="400">
 
+**Hypothesis:** There is no relationship between ASX 200 returns and household consumption pattern.
 
-### Possible use of Data 
-Looking at the changes in data we can come up with a possible assumption that people are travelling less due to work from home arrangement. 
-
-Spending in telecommunicaiton has increased due to advance work from home set up is causing people to spend more on telecoomunication for connectivity from home. 
-
-Pople are more health concern since there is a significant drop in tobaco consumption and additional spending on health. 
-
-If any business wants to invest their money they can work on investing in telecommunication, health related products. 
-
-Car importers may need to think differently for introducing vehicles supporting recreation more than day to day transport. 
-
+**Results:** The calculated correlation coefficients between ASX 200 returns and spending pattern in each category supports the hypothesis.
 
 ### Future Development
-
-What are the ares of telecoomunication people are spending and whether there is any scope of fintech companies to play role in that areas. 
-
+* There is an obvious decreasing trend in tobacco spending. What are the likely drivers of this decreasing trend?
+ 
+* Enhance the granularity of this study including explore any differences in consumption pattern between states and terrorities.
+  
 ### References
-
-https://pypi.org/project/yfinance/
+* ABS Household Final Consumption and Expenditure: https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/latest-release
+* ABS Unemployment Rate: https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/latest-release
+* Yahoo Finance API: https://pypi.org/project/yfinance/
 
