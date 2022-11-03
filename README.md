@@ -33,7 +33,7 @@ Seasonally adjusted data are used to better reflect the true patterns in the und
 
 * We first examine the quality of each datasets by checking if there is any missing, null or duplicated value, using the ".isnull.sum()", ".duplicated()" and ".info" method, the result is none, so we conclude the dataset is clean and ready for use.
 
-* The datasets comes in different frequency, some are daily, some are quarterly,  we used parameters, such as "index_col, "dayfirst", "parse_dates" and "infer_datetime_format, " to allow our data frames share consistent date format, and use the method of  ".plot" to visualise trend across the same timeframe of 10 years.
+* The datasets comes in different frequency, some are daily, some are quarterly,  we use parameters, such as "index_col, "dayfirst", "parse_dates" and "infer_datetime_format, " to allow our data frames share consistent date format, and use the method of  ".plot" to visualise trend across the same timeframe of 10 years.
 
 * In the unemployment dataset, basic statistic is run to see how the numbers are distributed, by methods of ".describe", ".max" , "idxmax" and the vice versa 'min', and 'idxmin'. We also use method of ".hvplot", and ""groupby(df.index.year).means()",  to see if particular states are more representative than the other, we decided to use the national data as they share similar pattern.
 
@@ -41,7 +41,7 @@ Seasonally adjusted data are used to better reflect the true patterns in the und
 
 * Household spending data are extracted based on chain volume measure to remove the impact of price volatility of consumer goods, we used methods of ".groupby(df.index.year).means() " and ".plot" to visualised the trend of annualised average spending.
 
-* We then converted the annualised averaged into percentage of spending among all the category by combining the transform method and anonymous function (i.e. "transform(lambda x: round(100 * x / df_mean.sum(axis = 1),2))", the converted result was visualised in pie chart used methods of ".subplots".
+* We then convert the annualised averaged into percentage of spending among all the category by combining the transform method and anonymous function (i.e. "transform(lambda x: round(100 * x / df_mean.sum(axis = 1),2))", the converted result was visualised in pie chart used methods of ".subplots".
 
 ### Key observations and findings
 #### Where do Australian spend their money?
