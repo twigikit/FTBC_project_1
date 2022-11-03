@@ -21,16 +21,21 @@ The following data has been used in the study:
 
 
 ### Data Cleaning and Exploration
-#### Household consumption and expenditure data
 
-TBC - Emma to add
+* Economic related data were sourced from RBA and ABS, mainly using panda's read_csv method for consistency. Open API yFinance, which extracted ASX data from Yahoo Finance. Date column is set as index for further concatenation and comparison.
 
-#### Economic Data
-* To explore economic data based on info published in ABS and cash interest rate from RBA, mainly using panda's read_csv method for consistency.
-* We first examine the quality for each our subject datasets by checking if there is missing value or null value, using the ".isnull.sum()" and ".info" method, the result is none, so we conclude the dataset is clean and ready for use.
-* After reading the dataset into dataframe, basic statistic is run in order to see how the numbers are distributed, by method of ".describe", ".max" , "idxmax" and the vice versa 'min', and 'idxmin'.
-* Apart from plotting the daily available data in line chart to its pattern to surface, we also use the method of "pct_change()" in order to see the velocity of the change.
-* We also explore the means of each year of the unemployment rate used the combination of .groupby(df.index.year).mean(), and found no significant outlier for each states in the past ten years, we observed that the states of TAS and SA often has the highest unemployment rate, whereas ACT has the lowest unemployment.
+* We first examine the quality of each datasets by checking if there is any missing, null or duplicated value, using the ".isnull.sum()", ".duplicated()" and ".info" method, the result is none, so we conclude the dataset is clean and ready for use.
+
+* The datasets comes in different frequency, some are daily, some are quarterly,  we used parameters, such as "index_col, "dayfirst", "parse_dates" and "infer_datetime_format, " to allow our data frames share consistent date format, and use the method of  ".plot" to visualise trend across the same timeframe of 10 years.
+
+* In the unemployment dataset, basic statistic is run to see how the numbers are distributed, by methods of ".describe", ".max" , "idxmax" and the vice versa 'min', and 'idxmin'. We also use method of ".hvplot", and ""groupby(df.index.year).means()",  to see if particular states are more representative than the other, we decided to use the national data as they share similar pattern.
+
+* When exploring the datasets of household saving and spending, we use method of "pct_change()" to measure its velocity of change over time, and use methods of ".concat() ", ".corr" and "seaborn.heatmap" to visualise correlation among each factors. We observed change of cash rates and household saving only has weak negative coefficient (i.e. -0.18), however rate of unemployment change are strongly corelated to household saving rate change (i.e. +0.76).
+
+* Household spending data are extracted based on chain volume measure to remove the impact of price volatility of consumer goods, we used methods of ".groupby(df.index.year).means() " and ".plot" to visualised the trend of annualised average spending.
+
+* We then converted the annualised averaged into percentage of spending among all the category by combining the transform method and anonymous function (i.e. "transform(lambda x: round(100 * x / df_mean.sum(axis = 1),2))", the converted result was visualised in pie chart used methods of ".subplots".
+
 
 
 ### Key observations and findings
