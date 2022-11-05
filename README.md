@@ -90,4 +90,3 @@ The following barplot shows the ten year trend for each spending category.
 * ABS Household Final Consumption and Expenditure (including household saving): https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/latest-release
 * ABS Unemployment Rate: https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/latest-release
 * Yahoo Finance API: https://pypi.org/project/yfinance/
-
