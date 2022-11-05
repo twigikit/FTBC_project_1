@@ -3,13 +3,13 @@ Prepared by Emma H, Kit N, Md Muhasenul H <br> *7 November 2022*
  
 
 ## Introduction
-This study seeks to uncover the Australian Household consumption and expenditure pattern. Specifically, we examine:
+This discovery study seeks to uncover the Australian Household consumption and expenditure pattern. Specifically, we examine:
 * Where do Australian spend their money?
 * How has the consumption pattern changed over the period from January 2012 to June 2022?
 * Is there any relationship between key economic indicators such as unemployment and household saving, and household consumption?
 * Is there any relationship between ASX 200 price movements and household consumption? <br>
 
-We also explore if there is any possbile Covid pandemic stimulated changes in consumption pattern. Care should be taken when interpreting the time series analysis results. 
+We also explore if there is any possbile Covid pandemic stimulated changes in consumption pattern. Extra care has been taken when interpreting the time series analysis results. 
 
 ## Data Used
 The following data has been used in the study:
@@ -82,7 +82,9 @@ The following barplot shows the ten year trend for each spending category.
 ### Future Development
 * There is an obvious decreasing trend in tobacco spending. What are the likely drivers of this decreasing trend?
  
-* Enhance the granularity of this study including explore any differences in consumption pattern between states and terrorities.
+* Enhance the granularity of this study including explore further some of the unexpected observations.
+
+* States and terrorities specific study specifically explore if there is any differences in consumption pattern between states and terrorities.
   
 ### References
 * ABS Household Final Consumption and Expenditure (including household saving): https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/latest-release
