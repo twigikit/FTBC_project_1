@@ -11,12 +11,6 @@ This study seeks to uncover the Australian Household consumption and expenditure
 
 We also explore if there is any possbile Covid pandemic stimulated changes in consumption pattern. Care should be taken when interpreting the time series analysis results. 
 
-## Potential Target Audience
-
-TBC
-
-
-
 ## Data Used
 The following data has been used in the study:
 * Australian household final consumption and expenditure quarterly seasonally adjusted chain volume measures published by the Australian Bureau of Statistics (ABS)
@@ -91,7 +85,7 @@ The following barplot shows the ten year trend for each spending category.
 * Enhance the granularity of this study including explore any differences in consumption pattern between states and terrorities.
   
 ### References
-* ABS Household Final Consumption and Expenditure: https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/latest-release
+* ABS Household Final Consumption and Expenditure (including household saving): https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/latest-release
 * ABS Unemployment Rate: https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/latest-release
 * Yahoo Finance API: https://pypi.org/project/yfinance/
 
