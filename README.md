@@ -111,7 +111,7 @@ With the findings from this discovery study, we recommend the following for futu
  
 * Enhance the granularity of this study including explore further some of the unexpected observations.
 
-* States and terrorities specific study specifically explore if there is any differences in consumption pattern between states and terrorities.
+* States and territories specific study specifically explore if there is any differences in consumption pattern between states and territories.
   
 ### References
 * ABS Household Final Consumption and Expenditure (including household saving): https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/latest-release
