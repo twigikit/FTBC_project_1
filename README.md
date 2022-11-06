@@ -1,15 +1,14 @@
-# Australian Household Consumption and Expenditure Pattern: A study from 2012 - 2022
+# Australian Household Consumption and Expenditure Pattern: A Discovery Study from 2012-2022
 Prepared by Emma H, Kit N, Md Muhasenul H <br> *7 November 2022*
  
-
-## Introduction
+ ## Introduction
 This discovery study seeks to uncover the Australian Household consumption and expenditure pattern. Specifically, we examine:
 * Where do Australian spend their money?
 * How has the consumption pattern changed over the period from January 2012 to June 2022?
 * Is there any relationship between key economic indicators such as unemployment and household saving, and household consumption?
 * Is there any relationship between ASX 200 price movements and household consumption? <br>
 
-We also explore if there is any possbile Covid pandemic stimulated changes in consumption pattern. Extra care has been taken when interpreting the time series analysis results. 
+We further explore if there is any possbile Covid pandemic stimulated changes in consumption pattern. Extra care has been taken when interpreting the time series analysis results. 
 
 ## Data Used
 The following data has been used in the study:
@@ -20,22 +19,49 @@ The following data has been used in the study:
 
 Chain volume measure is chosen as it measures consumption volumes by removing the part inflated by price increases. This metric also referred as constant price estimates. It provides better indication of movement in expenditure.
 
-Seasonally adjusted data are used to better reflect the true patterns in the underlying consumption 
+Seasonally adjusted data are used to better reflect the true patterns in the underlying consumption given the data has been modified to eliminate the effect of seasonal and calendar influences.
 
-### Data Cleaning and Exploration
-* Economic related data were sourced from ABS, mainly using panda's read_csv method for consistency. Open API yFinance, which extracted ASX data from Yahoo Finance. Date column is set as index for further concatenation and comparison.
+### Data Checking and Cleaning
+The following summarises the key steps taken to source, extract, clean and explore data:
+* **Sourcing data:** Economic related data are sourced from ABS. We have used panda's read_csv method to read, review and filter the data. ASX data was sourced from Yahoo Finance using API yfinance library. Date column is set as dataframe index.
 
-* We first examine the quality of each datasets by checking if there is any missing, null or duplicated value, using the ".isnull.sum()", ".duplicated()" and ".info" method, the result is none, so we conclude the dataset is clean and ready for use.
+* **Checking data quality:**  We check if there is any missing, null or duplicated value, using the ".isnull.sum()", ".duplicated()" and ".info" method. The data is of good quality. Minimal data correction is required.
 
-* The datasets comes in different frequency, some are daily, some are quarterly,  we use parameters, such as "index_col, "dayfirst", "parse_dates" and "infer_datetime_format, " to allow our data frames share consistent date format, and use the method of  ".plot" to visualise trend across the same timeframe of 10 years.
+* **Checking data frequency:** The datasets  are of different frequency, some are daily, some are quarterly.  When setting data as the dataframe index, we use parameters, such as "index_col, "dayfirst", "parse_dates" and "infer_datetime_format, " to allow our data frames share consistent date format. 
 
-* In the unemployment dataset, basic statistic is run to see how the numbers are distributed, by methods of ".describe", ".max" , "idxmax" and the vice versa 'min', and 'idxmin'. We also use method of ".hvplot", and ""groupby(df.index.year).means()",  to see if particular states are more representative than the other, we decided to use the national data as they share similar pattern.
+### Data Exploration
+**Economic data:** Intuitively, some key economic indicators may be correlated to each other. The matrix below summarises correlation coeffficient between each variables. ![](./Diagram/economic_corr.jpg) <br>
+We observe that unemployment and housing saving has a strong positive correlation, changes in Australian cash rate target is weakly negative correlated with unemployment and household saving. 
 
-* When exploring the datasets of household saving and spending, we use method of "pct_change()" to measure its velocity of change over time, and use methods of ".concat() ", ".corr" and "seaborn.heatmap" to visualise correlation among each factors. We observed change of cash rates and household saving only has weak negative coefficient (i.e. -0.18), however rate of unemployment change are strongly corelated to household saving rate change (i.e. +0.76).
+**Unemployment data:** We have unemployment at the national level as well as at state and terrorities level. We run basic statistic analysis using by functions such as ".describe", ".max" , "idxmax", 'min', and 'idxmin'. From the line plot, we found that NSW, VIC and QLD unemployment trend are relatively similar to each other. ACT has the lowest unemployment in most years. ![](./Diagram/unemploy_by_state.png)
 
-* Household spending data are extracted based on chain volume measure to remove the impact of price volatility of consumer goods, we used methods of ".groupby(df.index.year).means() " and ".plot" to visualised the trend of annualised average spending.
+**Household saving and spending**<br>
+Household spending is split into 18 categories. The table list the categories and the corresponding label used to represent in the category in charts in the following section.
 
-* We then convert the annualised averaged into percentage of spending among all the category by combining the transform method and anonymous function (i.e. "transform(lambda x: round(100 * x / df_mean.sum(axis = 1),2))", the converted result was visualised in pie chart used methods of ".subplots".
+| Spending Category | Label |
+|-------------------|-------|
+| Food | Food |
+| Cigarettes and tobacco | Tobacco |
+| Alcoholic beverages | Alcohol |
+| Clothing and footwear | Clothing |
+| Rent and other dwelling services | Rent |
+| Electricity, gas and other fuel  | Power|
+| Furnishings and household equipment | Household |
+| Health | Health |
+| Purchase of vehicles | Purchase_vehicle |
+| Operation of vehicles | Operation_vehicle |
+| Transport services | Transport |
+| Communications | Communication |
+| Recreation and culture | Recreation |
+| Hotels, cafes and restaurants | Hotel |
+| Insurance and other financial services | Insurance |
+| Other goods and services | Other |
+
+We calculate the changes in consumption for each category using "pct_change()".
+
+* **Aggregating data:** Monthly or quarterly data are aggregated using ""groupby(df.index.year).means()". The household spending data is in absolute amount. We deduce spending percentage for each category using a lambda function (i.e. "(lambda x: round(100 * x / df_mean.sum(axis = 1),2))". 
+
+* **Visualising data trend and pattern:** Matplotlib, hvplot and seaborn libraries are used to explore and help visualise data trend and pattern. We mostly use line plot and bar plot. Pie chart is used to present the proportion spend on each category. Seaborn library is used to visualise relationship between consumption pattern and economic indicators, and ASX 200 returns. 
 
 ### Key observations and findings
 #### Where do Australian spend their money?
@@ -80,6 +106,7 @@ The following barplot shows the ten year trend for each spending category.
 **Results:** The calculated correlation coefficients between ASX 200 returns and spending pattern in each category supports the hypothesis.
 
 ### Future Development
+With the findings from this discovery study, we recommend the following for future development:
 * There is an obvious decreasing trend in tobacco spending. What are the likely drivers of this decreasing trend?
  
 * Enhance the granularity of this study including explore further some of the unexpected observations.
@@ -90,3 +117,4 @@ The following barplot shows the ten year trend for each spending category.
 * ABS Household Final Consumption and Expenditure (including household saving): https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/latest-release
 * ABS Unemployment Rate: https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/latest-release
 * Yahoo Finance API: https://pypi.org/project/yfinance/
+
