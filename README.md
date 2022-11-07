@@ -36,7 +36,7 @@ We observe that unemployment and housing saving has a strong positive correlatio
 **Unemployment data:** We have unemployment at the national level as well as at state and terrorities level. We run basic statistic analysis using by functions such as ".describe", ".max" , "idxmax", 'min', and 'idxmin'. From the line plot, we found that NSW, VIC and QLD unemployment trend are relatively similar to each other. ACT has the lowest unemployment in most years. ![](./Diagram/unemploy_by_state.png)
 
 **Household saving and spending**<br>
-Household spending is split into 18 categories. The table list the categories and the corresponding label used to represent in the category in charts in the following section.
+Household spending is split into 16 categories. The table list the categories and the corresponding label used to represent in the category in charts in the following section.
 
 | Spending Category | Label |
 |-------------------|-------|
